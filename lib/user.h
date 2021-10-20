@@ -4,6 +4,7 @@
 
 #ifndef ARJAN_OBSERVER_PATTERN_LIB_USER_H_
 #define ARJAN_OBSERVER_PATTERN_LIB_USER_H_
+#include <iostream>
 #include <string>
 
 class User {
@@ -12,10 +13,9 @@ class User {
       : name_{name}
       , password_{password}
       , email_{email}
-      , plan_{"basic"}
-      , reset_code_{""} {}
+      , plan_{"basic"} {}
 
-  void ResetPassword(const std::string &code, const std::string &new_password) {
+  void ResetPassword(std::string_view code, std::string_view new_password) {
     if (code == reset_code_) {
       password_ = new_password;
     } else {
@@ -30,7 +30,7 @@ class User {
   std::string name_;
   std::string password_;
   std::string email_;
-  std::string plan_;
+  std::string plan_{"basic"};
   std::string reset_code_;
 };
 #endif//ARJAN_OBSERVER_PATTERN_LIB_USER_H_

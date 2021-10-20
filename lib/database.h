@@ -18,7 +18,7 @@ class Database {
     return new_user;
   }
 
-  [[nodiscard]] std::optional<User> FindUser(const std::string &email) const {
+  [[nodiscard]] std::optional<User> FindUser(std::string_view email) const {
     for (auto user : users_) {
       if (user.email_ == email)
         return user;
