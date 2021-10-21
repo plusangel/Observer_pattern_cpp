@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 include_directories(
         lib
         api
+        api2
 )
 
 #add_library(slack INTERFACE lib/slack.h)
@@ -18,3 +19,4 @@ include_directories(
 #add_library(plan_management INTERFACE api/plan_management.h)
 
 add_executable(plain plain.cpp)
+add_executable(event_driven event_driven.cpp)
