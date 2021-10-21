@@ -16,7 +16,7 @@ class Event {
     subscribers_[event_type.data()].push_back(function);
   }
 
-  std::function<void(User)> PostEvent(std::string_view event_type, User a_user) {
+  void PostEvent(std::string_view event_type, User a_user) {
     for (auto fn : subscribers_[event_type.data()]) {
       fn(a_user);
     }
