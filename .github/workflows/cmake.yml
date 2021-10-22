@@ -3,9 +3,7 @@ name: CMake
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+  
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Debug
@@ -23,6 +21,9 @@ jobs:
     
     - name: Get Conan
       uses: turtlebrowser/get-conan@v1.0
+      
+    - name: Create deafult profile
+      run: conan profile new default --detect
       
     - name: Update profile
       run: conan profile update settings.compiler.libcxx=libstdc++11 default
