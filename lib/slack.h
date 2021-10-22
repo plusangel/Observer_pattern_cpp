@@ -4,11 +4,12 @@
 
 #ifndef ARJAN_OBSERVER_PATTERN_LIB_SLACK_H_
 #define ARJAN_OBSERVER_PATTERN_LIB_SLACK_H_
+#include "spdlog/spdlog.h"
 #include <iostream>
 #include <string>
 
 void PostSlackMessage(std::string_view channel, std::string_view message)  {
-  std::cout << "[SlackBot - " << channel << "]: " << message << std::endl;
+  spdlog::info("[SlackBot {}]: {}", channel, message);
 }
 
 #endif//ARJAN_OBSERVER_PATTERN_LIB_SLACK_H_

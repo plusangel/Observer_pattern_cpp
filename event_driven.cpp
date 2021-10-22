@@ -1,13 +1,20 @@
-#include "event.h"
-#include "user.h"
-#include <iostream>
+#include "email_listener.h"
+#include "event_system.h"
+#include "log_listener.h"
+#include "slack_listener.h"
+#include "user_management_event_driven.h"
 
 int main() {
-  Event events_system{};
-  events_system.Subscribe("hola", [](User a_user) { std::cout << "Hello, " << a_user.name_ << "!" << std::endl; });
-  events_system.ListSubscribers();
-  User b_user{"angelos", "1234", "angelos@in.gr"};
-  events_system.PostEvent("hola", b_user);
+  EventSystem events_system{};
+  SetupSlackEventHandlers(events_system);
+  SetupEmailEventHandlers(events_system);
+  SetupLogEventHandlers(events_system);
+
+  Database users_db{};
+  UserManagementEventDriven users_management_system{users_db, events_system};
+
+  users_management_system.RegisterNewUser("angelos", "1234", "angelos@in.gr");
+  users_management_system.PasswordForgotten("angelos@in.gr");
 
   return 0;
 }
