@@ -4,6 +4,7 @@
 
 #ifndef ARJAN_OBSERVER_PATTERN_API2_EVENT_SYSTEM_H_
 #define ARJAN_OBSERVER_PATTERN_API2_EVENT_SYSTEM_H_
+#include "spdlog/spdlog.h"
 #include "user.h"
 #include <functional>
 #include <map>
@@ -12,7 +13,7 @@
 
 class EventSystem {
  public:
-  void Subscribe(std::string_view event_type, std::function<void(User)> function) {
+  void Subscribe(std::string_view event_type, const std::function<void(const User &)> &function) {
     subscribers_[event_type.data()].push_back(function);
   }
 
@@ -22,12 +23,12 @@ class EventSystem {
     }
   }
 
-  void ListSubscribers() {
+  [[maybe_unused]] void ListSubscribers() {
     for (const auto &[event, fun] : subscribers_)
-      std::cout << "EventSystem type: " << event << " subscribers " << subscribers_[event].size() << std::endl;
+      spdlog::info("EventSystem type: " + event + " subscribers " + std::to_string(subscribers_[event].size()));
   }
 
  private:
-  std::map<std::string, std::vector<std::function<void(User)>>> subscribers_;
+  std::map<std::string, std::vector<std::function<void(const User &)>>> subscribers_;
 };
 #endif//ARJAN_OBSERVER_PATTERN_API2_EVENT_SYSTEM_H_

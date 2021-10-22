@@ -7,15 +7,15 @@
 #include "event_system.h"
 #include "slack.h"
 
-void HandleUserRegisteredEvent(User user) {
+void HandleUserRegisteredEvent(const User &user) {
   PostSlackMessage("sales", user.name_ + " has registered with email address " + user.email_);
 }
 
-void HandleUserPasswordForgottenEvent(User user) {
+void HandleUserPasswordForgottenEvent(const User &user) {
   PostSlackMessage("sales", user.name_ + " has upgraded their plan.");
 }
 
-void HandleUserUpgradePlanEvent(User user) {
+void HandleUserUpgradePlanEvent(const User &user) {
   PostSlackMessage("sales", user.name_ + " has forgotten their password.");
 }
 

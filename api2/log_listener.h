@@ -7,15 +7,15 @@
 #include "event_system.h"
 #include "log.h"
 
-void HandleUserRegisteredEventLog(User user) {
+void HandleUserRegisteredEventLog(const User &user) {
   Log("User has registered with email address " + user.email_);
 }
 
-void HandleUserPasswordForgottenEventLog(User user) {
+void HandleUserPasswordForgottenEventLog(const User &user) {
   Log("User with email address " + user.email_ + " requested a password reset.");
 }
 
-void HandleUserUpgradePlanEventLog(User user) {
+void HandleUserUpgradePlanEventLog(const User &user) {
   Log("User with email address " + user.email_ + " has upgraded their plan");
 }
 

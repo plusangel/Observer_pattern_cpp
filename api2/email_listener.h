@@ -7,17 +7,17 @@
 #include "email.h"
 #include "event_system.h"
 
-void HandleUserRegisteredEventEmail(User user) {
+void HandleUserRegisteredEventEmail(const User &user) {
   SendEmail(user.name_, user.email_, "Welcome",
             "Thanks for registering, " + user.name_ + "!");
 }
 
-void HandleUserPasswordForgottenEventEmail(User user) {
+void HandleUserPasswordForgottenEventEmail(const User &user) {
   SendEmail(user.name_, user.email_, "Reset your password",
             "To reset your password, use this very secure code: " + user.reset_code_ + ".");
 }
 
-void HandleUserUpgradePlanEventEmail(User user) {
+void HandleUserUpgradePlanEventEmail(const User &user) {
   SendEmail(user.name_, user.email_, "Thank you",
             "Thanks for upgrading, " + user.name_ + "! You're gonna love it.");
 }

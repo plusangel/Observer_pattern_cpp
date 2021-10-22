@@ -5,10 +5,7 @@
 #ifndef ARJAN_OBSERVER_PATTERN_API_USER_MANAGEMENT_H_
 #define ARJAN_OBSERVER_PATTERN_API_USER_MANAGEMENT_H_
 #include "database.h"
-#include "email.h"
 #include "event_system.h"
-#include "log.h"
-#include "slack.h"
 #include "user.h"
 
 class UserManagementEventDriven {
