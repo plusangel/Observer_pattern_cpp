@@ -21,15 +21,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Download Conan package manager.
-      run: |
-           pwd
-           pip3 install wheel setuptools
-           pip3 install conan
-           export PATH=$PATH:/home/runner/.local/bin
-           echo $PATH
-           conan --version
-           ls
+    - name: Get Conan
+      uses: turtlebrowser/get-conan@v1.0
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
